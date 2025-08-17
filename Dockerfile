@@ -29,6 +29,8 @@ RUN ./build.sh frontend
 # Package docker image
 FROM alpine:3.22.1
 LABEL maintainer="MaysWind <i@mayswind.net>"
+ARG EBK_SECURITY_SECRET_KEY
+ENV EBK_SECURITY_SECRET_KEY=${EBK_SECURITY_SECRET_KEY}
 RUN addgroup -S -g 1000 ezbookkeeping && adduser -S -G ezbookkeeping -u 1000 ezbookkeeping
 RUN apk --no-cache add tzdata
 COPY docker/docker-entrypoint.sh /docker-entrypoint.sh
