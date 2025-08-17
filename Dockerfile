@@ -24,7 +24,7 @@ WORKDIR /go/src/github.com/mayswind/ezbookkeeping
 COPY . .
 RUN docker/frontend-build-pre-setup.sh
 RUN apk add git
-RUN ./build.sh frontend
+RUN ./build.sh frontend --no-lint --no-test
 
 # Package docker image
 FROM alpine:3.22.1
